@@ -35,6 +35,16 @@
 
 {{ content }}
 
+{%- if site.analytics.tracking_id -%}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.tracking_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', '{{ site.plainwhite.analytics_id }}');
+</script>
+{%- endif -%}
+
 {% if site.show_social %}
 <footer>
   <div>{{ site.description | default: site.title }}</div>

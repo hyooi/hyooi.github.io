@@ -7,6 +7,9 @@ excerpt_separator: "\n\n\n"
 date_format: "%B %d, %Y"
 url: "https://hyooi.github.io"
 
+analytics:
+  tracking_id: "G-7VLEDQQ4FZ"
+
 # Layout
 
 show_social: true          # show site description and social links in the footer
