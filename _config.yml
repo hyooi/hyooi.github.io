@@ -1,0 +1,34 @@
+title: "Hyooi의 데일리노트"
+author: "hyooi"
+description: "매일 뭐라도 하기 위한 데일리노트"
+permalink: /:title/
+lang: "ko"
+excerpt_separator: "\n\n\n"
+date_format: "%B %d, %Y"
+url: "https://hyooi.github.io"
+
+# Layout
+
+show_social: true          # show site description and social links in the footer
+show_excerpts: true        # show article excerpts on the home page
+show_frame: true           # adds a gray frame to the site
+show_sidebar: false        # show a sidebar instead of the usual header
+
+# Menu
+
+navigation:
+  - {file: "index.html", icon: home}
+  - {file: "archive.html", icon: address-card}
+
+external:                  # see http://fontawesome.com/icons
+  - {title: Mail, icon: envelope, url: "mailto:hyoin01@gmail.com"}
+  - {title: Github, icon: github, url: "https://github.com/hyooi"}
+  - {title: Subscribe, icon: rss, url: "/feed.xml"}
+
+comments:
+  disqus_shortname: "https-hyooi-github-io"
+#  isso_domain: ""         # see https://posativ.org/isso/
+
+plugins:
+ - jekyll-feed
+ - jekyll-sitemap
