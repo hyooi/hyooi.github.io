@@ -3,43 +3,53 @@ layout: post
 title:  "디자인패턴: Mediator"
 ---
 
-# Mediator
-- Behavioral pattern
-- 서로 관련된 **객체 사이의 상호 작용**을 캡슐화한다.
+# Mediator pattern
+> [ Behavioral pattern ]
+> 
+> 서로 관련된 **객체 사이의 상호 작용**을 캡슐화한다.
 
 
-✅ **문제**
+<br/>
+### 1. 문제
 
 1. 상호작용하는 객체들 사이의 밀접한 결합을 어떻게 피할 수 있는가?
 2. 객체 간의 상호작용을 어떻게 독립적으로 변경할 수 있는가?
 
-✅ **UML**
 
-![Mediator](/assets/images/mediator.png)
+<br/>
+### 2. UML
 
-✅ **특징**
+![Mediator](/assets/images/designpattern/mediator.png)
+
+### 3. 특징
 
 1. 객체는 서로 직접적으로 상호작용하는 대신, Mediator와 상호작용한다.
 2. 새로운 colleague를 추가할 수 있고, 새로운 mediator의 서브클래스를 통해 기존 colleague들의 상호작용을 독립적으로 변경할 수 있다.
 3. SRP, OCP
 
-✅ **장단점**
 
-- 장점
-    1. 각 객체를 분리시킴으로써 구현, 변경, 테스트, 재사용 용이
-    2. 제어 로직을 모아두기 때문에 관리 수월
+<br/>
+### 4. 장단점
 
-- 단점
-    1. Colleage의 복잡성과 갯수에 따라 미디에이터 객체가 너무 복잡해질 수 있음.
+- Advantages (+)
+    - 각 객체를 분리시킴으로써 구현, 변경, 테스트, 재사용 용이
+    - 제어 로직을 모아두기 때문에 관리 수월
 
-✅ **패턴 간 비교**
+- Disadvantages (–)
+    - Colleage의 복잡성과 갯수에 따라 미디에이터 객체가 너무 복잡해질 수 있음.
+
+
+<br/>
+### 5. 패턴 간 비교
 
 |패턴|용도|
 |------|---|
 |Observer|객체간 동적 단방향 연결을 설정|
 |Mediator|시스템 구성 요소간의 상호 종속성 제거. 대신 컴포넌트들은 단일 mediator 오브젝트에 종속됨|
 
-✅ **예제**
+
+<br/>
+### 6. 예제
 
 {% highlight java %}
 1  public class MyApp {  
@@ -144,5 +154,6 @@ title:  "디자인패턴: Mediator"
 {% endhighlight %}
 
 * [Github]에 전체 디자인패턴 예제 소스가 업로드되어 있습니다.
-
+* 포스팅의 내용은 GOF의 디자인패턴 및 헤드퍼스트 디자인패턴, 그리고 위키백과 등을 참조했습니다.
+  
   [Github]: https://github.com/hyooi/TIL/tree/master/til.designpattern
