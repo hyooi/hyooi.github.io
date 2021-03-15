@@ -10,6 +10,7 @@ PostConstruct어노테이션이 붙은 메소드는 spring **bean이 생성된 �
 아래와 같이 초기화 대상이 없는 경우에도 실행되며, 
 public/private/default/protected 모두 가능하지만 static은 사용 불가하다.
 
+
 {% highlight java %}
 @Service
 class EmployeeManagerImpl implements EmployeeManager {
