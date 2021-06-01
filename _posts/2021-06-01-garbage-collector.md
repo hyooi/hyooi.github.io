@@ -8,12 +8,14 @@ title:  "JVM Garbage Collectors"
 - Mark : 사용 중인 메모리와 그렇지 않은 메모리를 식별
 - Sweep : mark단계에서 식별된 오브젝트를 삭제하는 단계
 
+
 ## 장점
 - 수동으로 메모리 할당/해제하지 않아도 됨
 - Dangling pointer를 처리하지 않아도 됨
   (*dangling pointer: 객체에 대한 참조가 수정 없이 삭제되거나 할당 해제되어 
   포인터가 계속 할당 해제된 메모리를 가리킴)
 - 자동 memory leak관리
+
 
 ## 단점
 - jvm이 object참조의 생성, 삭제를 트래킹한 이후로, 기존 어플리케이션보다 더 많은 cpu를 사용하고,
@@ -31,6 +33,8 @@ title:  "JVM Garbage Collectors"
 ```
 java -XX:+UseSerialGC -jar Application.java
 ```
+
+
 ### Paralled Garbage Collector
 - JVM의 기본 GC. 다중 스레드를 사용해 힙 메모리를 관리
 - GC수행하는 동안 다른 어플리케이션 스레드도 프리징됨
@@ -54,6 +58,16 @@ java -XX:+UseParallelGC -jar Application.java
 - 총 시간의 98% 이상이 CMS가비지 컬렉션에 사용되고, 힙의 2%미만으로 복구되면 OOM발생
   (-XX : -UseGCOverheadLimit으로 비활성화 가능)
 - Java9부터 더이상 사용X, Java14부터 미지원
+```aidl
+java -XX:+UseParNewGC -jar Application.java
+```
+
 ### G1 Garbage Collector
+- Garbage First Garbage Collector
+- 대용량 메모리 공간이 있는 다중 프로세서 시스템에서 실행되는 어플리케이션을 위해 설계됨
+- Java7부터 지원하며, 효율성이 높아 CMS 가비지 컬렉터를 대체
+```aidl
+java -XX:+UseG1GC -jar Application.java
+```
 
 ### Z Garbage Collector
