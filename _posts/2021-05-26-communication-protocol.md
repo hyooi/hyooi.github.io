@@ -59,7 +59,7 @@ title:  "통신 프로토콜"
 ## HTTP흐름
 1. TCP커넥션 오픈. 설정에 따라 새 커넥션을 열거나 기존 연결 재사용 가능
 2. HTTP메시지 전송(HTTP2이전엔 사람이 읽기 가능)
-```aidl
+{% highlight bash %}
 -- 요청
 GET / HTTP/1.1
 Host: developer.mozilla.org
@@ -76,5 +76,5 @@ Content-Length: 29769
 Content-Type: text/html
 
 <!DOCTYPE html... (here comes the 29769 bytes of the requested web page)
-```
+{% endhighlight %}
 3. 연결을 닫거나 다른 요청을 위해 커넥션 재사용

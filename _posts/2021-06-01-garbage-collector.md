@@ -29,6 +29,9 @@ title:  "JVM Garbage Collectors"
 - 단일 스레드에서 작동하는 가장 간단한 구현
 - 실행 시 전체 어플리케이션의 스레드를 프리징하므로, 멀티 스레드 환경에서는 좋은 방법이 아님
 - 적은 중단 시간을 필요로 하지 않는 클라이언트 스타일의 머신에서 선택됨
+- mark-sweep-compact: old영역의 live한 객체를 mark후, 
+  heap의 앞부분부터 확인해 살아있는 것만 남김(sweep),
+  그리고 각 객체들이 연속되게 쌓이도록 힙의 앞부분부터 채워 객체가 존재하는 부분과 없는 부분으로 나눔(compaction)
 {% highlight bash %}
 java -XX:+UseSerialGC -jar Application.java
 {% endhighlight %}
@@ -38,6 +41,7 @@ java -XX:+UseSerialGC -jar Application.java
 - JVM의 기본 GC. 다중 스레드를 사용해 힙 메모리를 관리
 - GC수행하는 동안 다른 어플리케이션 스레드도 프리징됨
 - 최대 가비지 컬렉션 스레드와 일시 중지시간, 처리량 및 힙 크기 지정 가능
+- Serial garbage collector와 알고리즘은 동일
 
 {% highlight bash %}
 java -XX:+UseParallelGC -jar Application.java
@@ -50,7 +54,7 @@ java -XX:+UseParallelGC -jar Application.java
 
 ### CMS Garbage Collector
 - Concurrent mark sweep이라는 의미. 
-- 다수의 가비지 컬렉션 스레드를 사용
+- 다수의 가비지 컬렉션 스레드를 사용. 따라서 다른 gc방식보다 메모리와 cpu를 많이 사용
 - 짧은 가비지 컬렉션 중단을 위해 디자인되었고, 어플리케이션을 사용하는 동안 가비지 컬렉터와
   프로세서 리소스가 공유됨
 - 응답이 느리지만 가비지 컬렉션을 위해 응답을 중지하지 않음
@@ -59,6 +63,7 @@ java -XX:+UseParallelGC -jar Application.java
 - 총 시간의 98% 이상이 CMS가비지 컬렉션에 사용되고, 힙의 2%미만으로 복구되면 OOM발생
   (-XX : -UseGCOverheadLimit으로 비활성화 가능)
 - Java9부터 더이상 사용X, Java14부터 미지원
+- compaction단계가 기본적으로 제공되지 않아, 자주 실행해야 하는 경우 다른 gc방식보다 stop-the-world시간이 길 수 있음
 {% highlight bash %}
 java -XX:+UseParNewGC -jar Application.java
 {% endhighlight %}
