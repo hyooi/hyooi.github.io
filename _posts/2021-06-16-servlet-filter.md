@@ -6,6 +6,7 @@ title:  "서블릿 필터"
 # 서블릿 필터?
 - Java웹앱에서 HTTP통신 시 요청,응답을 사전, 사후 처리한다.
 - EX. 로깅, 인증, 세션, 인코딩 등
+
 ![img.png](/assets/images/servlet-filter.png)
 <br><br>
 
