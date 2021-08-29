@@ -3,6 +3,11 @@ layout: post
 title:  "마이크로서비스 지원역량"
 ---
 
+- MSA환경에서 필요한 역량들은 현재 이미 spring cloud에서 오픈소스로 지원하고 있음
+- 보통 어노테이션만으로도 구성이 가능
+- 넷플릭스에서 개발한 오픈소스인 netflix oss와 spring cloud의 오픈소스를 일반적으로 사용함
+
+
 # Service Discovery
 - MSA를 도입하면 서비스 갯수 및 인스턴스 갯수가 급증해 전체 토폴로지가 복잡해짐
 - 서비스간 호출이 복잡하게 엮여있게 됨
@@ -15,14 +20,15 @@ title:  "마이크로서비스 지원역량"
 # Config server
 - MSA를 도입하면 서비스가 다양해져 설정 관리가 복잡해짐
 - 다수의 설정파일 중 잘못되는 경우 장애가 발생하게 되므로, 설정정보를 파일에서 분리함
-- 중앙 config server에서 설정 관리
+- 중앙 config server에서 설정 관리(ex. git, 파일시스템 등에 저장)
 - 기본적으로 app기동 시 config정보를 fetch해오며, 변경된 정보는 서비스 재배포없이 반영 가능
 - EX. spring cloud config server
 
 
-# Service gateway
+# Service gateway(= api gateway)
 - 인증, 인가, 로깅, 필터링 등의 공통 처리 수행
 - 각각의 서비스들에 대한 공통 로직을 처리함
+- ex. zuul
 
 
 # SW Defined load balancer
@@ -53,8 +59,8 @@ title:  "마이크로서비스 지원역량"
 # Messaging
 - MSA는 메시징을 이용한 서비스 간 협력 설계 방식을 권고
 - 서비스 간 결합도를 낮출 수 있기 때문!
+- spring cloud stream을 통해 다양한 messaging시스템과 event driven architecture구현 가능
 - EX. RabbitMQ, ActiveMQ, kafka, AWS kinesis
-
 
 # Devops
 - CI, CD, 자동화된 QA 등이 필요
