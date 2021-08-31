@@ -35,15 +35,30 @@ title:  "마이크로서비스 지원역량"
 # Config server
 - MSA를 도입하면 서비스가 다양해져 설정 관리가 복잡해짐
 - 다수의 설정파일 중 잘못되는 경우 장애가 발생하게 되므로, 설정정보를 파일에서 분리함
-- 중앙 config server에서 설정 관리(ex. git, 파일시스템 등에 저장)
+- 중앙 config server에서 설정 관리(ex. git, db, 파일시스템 등에 저장)
 - 기본적으로 app기동 시 config정보를 fetch해오며, 변경된 정보는 서비스 재배포없이 반영 가능
-- EX. spring cloud config server
+- EX. spring cloud config server, kubernates configmap, consul, etcd, zookeeper
+
+
+## spring cloud config
+- rest api로 호출하면 json으로 응답
+- spring boot app에서 사용하는 `application.yml`등의 파일을 git이나 db에 저장하고,
+    이를 config server를 통해 로드해올 수 있음
 
 
 # Service gateway(= api gateway)
 - 인증, 인가, 로깅, 필터링 등의 공통 처리 수행
 - 각각의 서비스들에 대한 공통 로직을 처리함
-- ex. zuul
+- 서비스 마다 언어, 프레임워크가 상이한 msa환경에서 공통 로직 적용하기 용이함
+- ex. zuul, spring cloud gateway, kong api gateway, amazone api gateway, gcp cloud endpoints
+
+
+## netflix zuul
+- eureka, ribbon, hystrix와 통합 가능
+- eureka를 통해 별도 설정없이도 서비스 디스커버리에서 서비스를 자동 매핑함
+- ribbon을 이용해 로드밸런싱되며,
+- zuul의 모든 호출은 hystrix를 거쳐 호출되게 됨
+- zuul filter를 통해 java로 서비스 호출 전후 실행할 코드를 작성할 수 있음
 
 
 # SW Defined load balancer
@@ -56,7 +71,17 @@ title:  "마이크로서비스 지원역량"
 # Circuit breaker
 - 한 서비스의 장애가 다른 서비스의 장애로 전파되지 않도록 함
 - 서비스 사이에 위치해, 특정 서비스에 장애가 발생했다고 판단되면 circuit차단
+- circuit차단 시 예외발생 대신 fallback패턴으로 다른 행동을 정의할 수도 있음
+- ex. 다른 db호출, retry queue에 쌓거나 하드코딩 결과 응답
+- 실패를 빠르게 인지해 시스템 전체에 영향이 가지 않도록 방지하고, 호출 실패 시 대체 경로를 사용하게 함
 - ex. hystrix
+
+
+## hystrix
+- circuit breaker
+- fallback
+- thread isolation: 실제 호출을 새로운 thread가 intercept하여 호출
+- timeout: 동일한 정책의 timeout적용 가능 ex. socket, connection, read, jdbc socket..
 
 
 # Distributed tracing
