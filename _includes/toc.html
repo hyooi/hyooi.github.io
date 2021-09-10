@@ -1,4 +1,3 @@
-Table of contents
 {% capture tocWorkspace %}
 {% comment %}
 Copyright (c) 2017 Vladimir "allejo" Jimenez
@@ -80,7 +79,7 @@ generate the table of contents and will NOT output the markdown given to it
 {% assign lastLevel = 0 %}
 
 {% capture listModifier %}{% if orderedList %}ol{% else %}ul{% endif %}{% endcapture %}
-
+Table of contents
 {% for node in nodes %}
 {% if node == "" %}
 {% continue %}
