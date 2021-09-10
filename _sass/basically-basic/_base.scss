@@ -109,8 +109,19 @@ a {
   }
 }
 
-// *:focus {
-//   border-color: $accent-color;
-//   outline: none;
-//   box-shadow: 0 0 10px $accent-color;
-// }
+.toc {
+  font-size: 0.9em;
+  position: sticky !important; /* added to make toc scroll with page */
+  float: right !important; /* added to make toc scroll with page */
+  top: 0;
+  right: 0;
+  width: 300px;
+  margin-right: -1 * 300px;
+  padding-left: 1em;
+  padding-top: 1em !important; /* added to make toc scroll with page */
+  z-index: 10;
+
+  li {
+    color: #696969;
+  }
+}
