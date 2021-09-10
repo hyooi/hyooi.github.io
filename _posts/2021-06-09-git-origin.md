@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Git 원격 브랜치 사용"
+published: false
 ---
 
 ### 원격 브랜치 갱신

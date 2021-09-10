@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "디자인패턴: Proxy"
+published: false
 ---
 
 # Proxy pattern

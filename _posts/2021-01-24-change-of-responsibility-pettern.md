@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "디자인패턴: Chain Of Responsibility"
+published: false
 ---
 
 # Chain Of Responsibility

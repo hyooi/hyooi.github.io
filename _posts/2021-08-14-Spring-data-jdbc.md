@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Spring data jdbc적용 후기"
+published: false
 ---
 
 # Spring data jdbc

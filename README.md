@@ -1,8 +1,5 @@
-# hyooi.github.io
-
-매일 뭐라도 하기 위한 데일리노트
-
-## 로컬 서버기동
+# 실행
 ```
 bundle exec jekyll serve
 ```
+- published상태가 false인 포스트도 함께 퍼블리싱하고싶은 경우, `--unpublished` 옵션 추가해 실행할 것

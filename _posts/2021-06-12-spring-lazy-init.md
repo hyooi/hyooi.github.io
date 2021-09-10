@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "스프링 lazy init"
+published: false
 ---
 
 # 1. Lazy init

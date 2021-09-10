@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Intelij 서버 원격접속"
+published: false
 ---
 
 ### Intelij에서 원격 서버 접속하기

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "마이크로서비스 지원역량"
+published: false
 ---
 
 - MSA환경에서 필요한 역량들은 현재 이미 spring cloud에서 오픈소스로 지원하고 있음

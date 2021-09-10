@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "마이크로서비스 서비스 분리 전략"
+published: false
 ---
 
 # 작고 분리가 쉬운 서비스로 워밍업하라

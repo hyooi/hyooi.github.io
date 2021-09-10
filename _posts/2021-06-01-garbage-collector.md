@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "JVM Garbage Collectors"
+published: false
 ---
 
 ## 가비지 컬렉션 단계

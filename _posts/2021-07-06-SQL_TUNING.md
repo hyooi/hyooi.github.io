@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "SQL튜닝"
+published: false
 ---
 
 # 1. 실행계획?

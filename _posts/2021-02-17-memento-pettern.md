@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "디자인패턴: Memento"
+published: false
 ---
 
 # Memento pattern

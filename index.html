@@ -1,10 +1,8 @@
 ---
-layout: default
-title: "Home"
+layout: home
+paginate: true
+alt_title: "데일리블로그"
+image: /assets/bg.png
+introduction: |
+  매일 뭐라도 하기 위한 블로그
 ---
-
-{% if site.show_excerpts %}
-  {% include home.html %}
-{% else %}
-  {% include archive.html title="Posts" %}
-{% endif %}

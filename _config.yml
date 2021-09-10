@@ -1,37 +1,60 @@
-title: "Hyooi의 데일리노트"
-author: "hyooi"
-description: "매일 뭐라도 하기 위한 데일리노트"
-permalink: /:title/
-lang: "ko"
-excerpt_separator: "\n\n\n"
-date_format: "%B %d, %Y"
-url: "https://hyooi.github.io"
+lang: ko
+title: 데일리블로그
+email: hyoin01@gmail.com
+description: kello
+url: https://hyooi.github.io
+author:
+  name: hyooi
+  picture: /assets/bg.jpg
+github_username: hyooi
+logo: favicon.ico
+search: true
+search_full_content: false
+search_provider: lunr #algolia
+#algolia:
+#  application_id: # YOUR_APPLICATION_ID
+#  index_name: # YOUR_INDEX_NAME
+#  search_only_api_key: # YOUR_SEARCH_ONLY_API_KEY
+#  powered_by: # true (default), false
 
-analytics:
-  tracking_id: "G-7VLEDQQ4FZ"
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-basically-basic
+plugins: # previsously gems
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+feed:
+  path: atom.xml
 
-# Layout
+# Pagination - https://jekyllrb.com/docs/pagination/
+paginate: 5
+paginate_path: /page:num/
 
-show_social: true          # show site description and social links in the footer
-show_excerpts: true        # show article excerpts on the home page
-show_frame: true           # adds a gray frame to the site
-show_sidebar: true        # show a sidebar instead of the usual header
+# Exclude from processing.
+exclude:
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - Gemfile
+  - Gemfile.lock
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
 
-# Menu
+# Front Matter Defaults
+defaults:
+  # _posts
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: post
+      read_time: true
 
-navigation:
-  - {file: "index.html", icon: home}
-  - {file: "archive.html", icon: address-card}
+disqus:
+  shortname: https-hyooi-github-io
 
-external:                  # see http://fontawesome.com/icons
-  - {title: Mail, icon: envelope, url: "mailto:hyoin01@gmail.com"}
-  - {title: Github, icon: github, url: "https://github.com/hyooi"}
-  - {title: Subscribe, icon: rss, url: "/feed.xml"}
-
-comments:
-  disqus_shortname: "https-hyooi-github-io"
-#  isso_domain: ""         # see https://posativ.org/isso/
-
-plugins:
- - jekyll-feed
- - jekyll-sitemap
+google_analytics : G-7VLEDQQ4FZ

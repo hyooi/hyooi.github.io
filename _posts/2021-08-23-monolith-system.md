@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "모놀리틱 시스템"
+published: false
 ---
 
 # 모놀리틱 시스템

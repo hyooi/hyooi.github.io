@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "통신 프로토콜"
+published: false
 ---
 
 # TCP(Transmission Control Protocol)

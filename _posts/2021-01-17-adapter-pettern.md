@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "디자인패턴: Adapter"
+published: false
 ---
 
 # Adapter pattern

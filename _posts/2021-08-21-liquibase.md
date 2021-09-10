@@ -1,6 +1,12 @@
 ---
 layout: post
 title:  "Liquibase offline모드 적용하기"
+published: false
+categories:
+  - Database
+tags:
+  - Liquibase
+  - 형상관리
 ---
 
 # DB형상관리?

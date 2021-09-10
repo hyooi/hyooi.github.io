@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Garbage Collector 튜닝"
+published: false
 ---
 
 # 튜닝의 목적
