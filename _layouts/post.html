@@ -7,6 +7,10 @@ layout: default
 <main id="main" class="page-content" aria-label="Content">
   <div class="inner">
     <article class="entry-wrap">
+      <div class="toc-div">
+        <div class="toc-header">Table of Contents</div>
+        {% include toc.html html=content class="toc" %}
+      </div>
       <div class="entry-content">
         {{ content }}
       </div>
