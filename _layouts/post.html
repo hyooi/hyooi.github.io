@@ -20,7 +20,7 @@ layout: default
           {% for category in site.categories %}
           {% if category[1].size == i %}
           <li>
-            <a href="#{{ category[0] | slugify }}">
+            <a href="/categories/#{{ category[0] | slugify }}">
               {{ category[0] }} <span>({{ i }})</span>
             </a>
           </li>
