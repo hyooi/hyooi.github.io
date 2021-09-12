@@ -7,9 +7,30 @@ layout: default
 <main id="main" class="page-content" aria-label="Content">
   <div class="inner">
     <article class="entry-wrap">
-      <div class="toc-div">
-        <div class="toc-header">Table of Contents</div>
-        {% include toc.html html=content class="toc" %}
+      <div class="right-wrap">
+        <div class="right-header">Category</div>
+        <ul class="content-list">
+          {% assign categories_max = 0 %}
+          {% for category in site.categories %}
+          {% if category[1].size > categories_max %}
+          {% assign categories_max = category[1].size %}
+          {% endif %}
+          {% endfor %}
+          {% for i in (1..categories_max) reversed %}
+          {% for category in site.categories %}
+          {% if category[1].size == i %}
+          <li>
+            <a href="#{{ category[0] | slugify }}">
+              {{ category[0] }} <span>({{ i }})</span>
+            </a>
+          </li>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+        </ul>
+        <br/>
+        <div class="right-header">Table of Contents</div>
+        {% include toc.html html=content class="content-list" %}
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-2333333335898405"

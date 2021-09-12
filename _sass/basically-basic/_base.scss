@@ -109,7 +109,7 @@ a {
   }
 }
 
-.toc-div {
+.right-wrap {
   position: sticky !important; /* added to make toc scroll with page */
   float: right !important; /* added to make toc scroll with page */
   top: 0;
@@ -121,7 +121,7 @@ a {
   border-left: 1px solid #f0f0f2;
 }
 
-.toc-header {
+.right-header {
   color: #797979;
   font-size: 0.8em;
   margin-bottom: 0.9em;
@@ -129,7 +129,7 @@ a {
   font-weight: 700;
 }
 
-.toc {
+.content-list {
   font-size: 0.8em;
 
   li {
@@ -143,6 +143,7 @@ a {
   a {
     text-decoration: none;
   }
+
 }
 
 @media screen and (max-width: 1100px) {
