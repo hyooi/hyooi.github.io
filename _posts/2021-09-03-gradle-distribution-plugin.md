@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Gradle distribution plugin으로 배포판 만들기"
-published: false
 categories:
   - gradle
 tags:
@@ -19,7 +18,8 @@ maven은 [assembly plugin](http://maven.apache.org/plugins/maven-assembly-plugin
 
 그렇다면 **gradle**은 어떻게 해야할까?
 
-그래들은 이와 같은 작업을 위해 <ins>distribution plugin</ins>을 제공한다.
+그래들은 이와 같은 작업을 위해 [distribution plugin](https://docs.gradle.
+org/current/userguide/distribution_plugin.html)을 제공한다.
 메이븐처럼 별도의 <var>assembly.xml</var>이 필요하지 않고 <var>build.gradle</var>에 작성할 수 있어 훨씬 간결하게 사용할 수 있다.
 
 <br/>
