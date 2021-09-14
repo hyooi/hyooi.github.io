@@ -85,7 +85,7 @@ gitlab컨테이너에 접속한다. 상위 명령어 중 name을 다르게 주�
 external_url "http://123.456.789.000:1111"
 gitlab_rails['gitlab_shell_ssh_port'] = 2222
 ```
-상기 설정을 찾아 주석을 해제하고 수정해준다.
+<var>/etc/gitlab/gitlab.rb</var>에서 상기 설정을 찾아 주석을 해제하고 수정해준다.
 
 docker-compose.yml파일에 이미 설정해둔 내용이니 자동적용되는게 맞지않나 싶지만... 
 저 설정만으로는 작동이 안된다.
