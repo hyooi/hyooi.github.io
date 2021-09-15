@@ -1,35 +1,47 @@
 ---
 layout: post
-title:  "Liquibase offline모드 적용하기"
-published: false
+title:  "Liquibase offline 적용하기"
 categories:
+  - Sql
   - Database
 tags:
   - Liquibase
   - 형상관리
 ---
 
-# DB형상관리?
-- 개발을 하는 사람이라면 대부분 형상관리를 위해 git을 사용하는 데 비해, DB형상관리는 보편적이지 않은 것 같다.
-flyway나 liquibase를 활용하게 되면, 업무를 하는데 **필요한 기본 dataset을 별도로 관리**하고, **실제 db에 연동해뒀다가 필요할 때 적용**하도록 할 수 있다.
-- jpa를 사용하는 경우, 약간의 설정으로도 하이버네이트가 엔티티 설정을 읽어들여 자동으로 ddl을 실행하도록 해줄 수가 있다.
-그런데 spring data jdbc같은 경우 이러한 방식이 불가능하므로, 공식 문서에서는 이러한 db형상관리 솔루션을 별도로 사용하는 것을 권장하고 있다.
+### 1. 개요
+대부분의 개발자는 개발한 코드를 git, svn 등의 소프트웨어로 형상관리한다. 
+회사마다 별도의 상업용 소프트웨어를 구매해 사용하기도 하고, 해당 이력은 항상 중요하게 관리된다.
+
+그에 비해, DB형상관리는 그다지 보편적이지는 않다.
+
+그런데 만약 다양한 종류의 데이터베이스에 맞는 SQL을 관리해야 한다면 어떨까?
+1번 서버에는 Oracle, 2번 서버에는 Mysql, 3번 서버에는 H2를 사용한다고 가정하자.
+Oracle에서 정상적으로 실행됐던 SQL이 Mysql에서도 정상 실행될까?
+
+답은 **아니다**이다. 같은 RDBMS라도 문법이 조금씩 다르기 때문에, 각각 맞는 SQL을 별도로 관리해주어야 한다.
+이 때, liquibase를 사용하면 <ins>sql이 아닌 xml이나 json으로 데이터셋을 관리</ins>하고,
+**각각의 DBMS에 맞는 sql을 자동 생성**되도록 할 수가 있다.
+> jpa를 사용하면 하이버네이트가 엔티티 설정을 통해 자동으로 ddl을 실행하도록 해줄 수가 있다.
+> 그런데 spring data jdbc같은 경우 이러한 방식이 불가능하므로, 공식 문서에서는 flyway나 liquibase같은 db형상관리 솔루션을 별도로 사용하는 것을 
+> 권장하고 있다.
+
 <br/>
 
+### 2. Liquibase 오프라인 모드
+flyway와 liquibase를 비교해둔 글을 흔히 찾아볼 수 있다. 사실 사용하기 쉬운 쪽은 flyway인데, liquibase쪽이 기능은 훨씬 많다.
 
-## Liquibase
-- flyway와 liquibase를 비교해둔 글을 흔히 찾아볼 수 있다. 사용하기 쉬운 쪽은 flyway인데, liquibase쪽이 기능은 훨씬 많다. 
-- 보통 db형상관리는 실제db에 연동해 빌드할 때마다 적용되도록 하는 경우가 많은데, 나는 실제db와는 연동하지 않고 빌드 시 sql을 export하도록 하고자 했다.
-따라서 offline모드를 별도로 지원하는 liquibase를 선택했다. 
-- 또한 우리팀처럼 다양한 데이터베이스 환경을 지원해야 하는 경우엔 liquibase사용이 적합하다. sql로만 이력관리가 가능한 flyway에 비해, 
-liquibase는 xml, json, yml등의 방식으로도 관리가 가능하다. 개인적으로 이 중에는 xml로 설정하는 것이 가장 보기 편한 것 같다... 
+이러한 일반적인 DB형상관리 솔루션 적용 사례는 <ins>실제DB에 연동해 빌드 시 변경 내용을 자동 적용</ins>하도록 하는 것이다.
+그런데 나는 실제DB에는 연동하지 않았고, 빌드 시 XML설정파일을 읽어 SQL을 파일로 생성되도록 하고자 했다.
+관리자가 직접 확인한 후 실행하길 의도한 것이다.
+
+따라서 **offline모드**를 별도로 지원하는 <ins>liquibase</ins>를 선택했다.  
+
 <br/>
 
+### 3. build.gradle
 
-## Liquibase 적용
-- spring boot를 활용한 프로젝트에 바로 liquibase를 붙이기도 하는데, 나같은 경우엔 별도의 erd용 프로젝트를 두고 관리하고 있다.
-먼저 build.gradle 파일을 보자. 
-{% highlight xml %}
+```bash
 plugins {
     id 'org.springframework.boot' version '2.5.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
@@ -37,18 +49,9 @@ plugins {
     id 'org.liquibase.gradle' version '2.0.4'
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     liquibaseRuntime 'org.springframework.boot:spring-boot-starter-data-jpa'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.liquibase:liquibase-core:4.3.5'
-    **liquibaseRuntime 'org.liquibase:liquibase-core:4.3.5'**
-    testCompileOnly 'org.projectlombok:lombok:1.18.20'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
-    testRuntimeOnly 'com.h2database:h2'
+    liquibaseRuntime 'org.liquibase:liquibase-core:4.3.5'
 }
 
 clean {
@@ -57,12 +60,8 @@ clean {
     })
 }
 
-test {
-    useJUnitPlatform()
-}
-
 liquibase {
-    **activities** {
+    activities {
         def changeLog = "${project.name}/src/main/resources/changelog/master.xml"
         oracle {
             changeLogFile "${changeLog}"
@@ -83,20 +82,7 @@ liquibase {
         }
     }
 }
-
-updateSQL {
-    dependsOn 'clean'
-    doLast {
-        copy {
-            from "${project.projectDir}/output/h2.sql"
-            into "${project.rootDir}/server/src/main/resources"
-            rename { String fileName ->
-                fileName.replace("h2.sql", "schema-h2.sql")
-            }
-        }
-    }
-}
-{% endhighlight %}
+```
 - build파일 중 중요한 것은, **liquibaseRuntime과** **activities이다**. 
 - liquibaseRuntime dependency를 적용하게 되면 liquibase의 task를 사용할 수 있게 되는데,
 이 중 updateSQL은 오프라인 모드로 적용했을 때 실행 가능한 task이다.
@@ -104,3 +90,7 @@ updateSQL {
 - 마지막으로 updateSQL은 수행 전에 무조건 clean task를 실행하게 되어있다.
 liquibase offline모드 사용 시 자동으로 변경한 change log를 csv로 export하게되는데, 
 해당 csv파일에 이전에 export된 이력이 남아있으면 빈 sql만 출력되기 때문에 무조건 삭제 후 실행하도록 설정했다.
+
+<br/>
+
+### 4. 결론
