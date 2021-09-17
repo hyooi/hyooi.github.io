@@ -59,7 +59,7 @@ gitlab-runner:
 > shared runner뿐만이 아니라 group runner, 프로젝트의 specific runner도 지정할 수 있으나,
 > 모든 프로젝트에서 사용할 수 있는 runner를 설치하고자 shared runner를 설치했다.
 
-![gitlab-main](/assets/runner0.png)
+![gitlab-main](/assets/images/runner0.png)
 
 <br/>
 
@@ -80,7 +80,7 @@ $ gitlab-runner register
 
 ##### 2.2.3. 등록된 러너 확인
 2.2.1.의 화면에 방금 등록한 러너가 조회되면 정상 등록된 것이다. 
-![gitlab-main](/assets/runner1.png)
+![gitlab-main](/assets/images/runner1.png)
 
 <br/>
 

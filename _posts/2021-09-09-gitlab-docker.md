@@ -102,7 +102,7 @@ gitlab-ctl reconfigure
 
 ### 3. 웹페이지 접속
 
-![gitlab-main](/assets/gitlab-main.png)
+![gitlab-main](/assets/images/gitlab-main.png)
 이제 <var>http://123.456.789.000:1111</var>로 접속하면 드디어 멀쩡한 로그인 페이지가 등장한다.
 
 무려 <var>complete devops platform</var>이라고 설명하고 있다.
