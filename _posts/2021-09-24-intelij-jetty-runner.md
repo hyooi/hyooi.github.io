@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "IntelliJ로 웹프로젝트 기동하기"
+title:  "IntelliJ에서 Jetty로 웹프로젝트 기동하기"
 categories:
 - Java
 tags:
