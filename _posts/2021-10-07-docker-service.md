@@ -73,7 +73,7 @@ com/config/daemon/#docker-daemon-directory)).
 <br/>
 
 #### 4.2. 힌트 발견2
-도커 데몬 로그는 리눅스의 경우, <var>/var/log/syslog</var>에서 확인할 수 있다.
+도커 데몬 로그는 리눅스의 경우, <var>/var/log/syslog</var>에서 확인할 수 있다. [공식문서 참조](https://docs.docker.com/config/daemon/#read-the-logs)
 
 vi를 열고 로그를 확인했더니, 해당 시간에 뭔가 살벌한 로그가 쌓여있었다.
 {% highlight bash linenos %}
