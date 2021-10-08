@@ -2,7 +2,7 @@
 layout: post
 title:  "도커 이미지가 사라졌어요"
 categories:
-- docker
+- 트러블슈팅
 tags:
 - docker
 ---
