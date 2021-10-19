@@ -120,3 +120,12 @@ Root CA를 확인할 수 없으므로 접속이 차단된다.
 
 또한, Root CA가 만료되는 케이스도 있는데([gitlab-ssl-2참조](https://hyooi.github.io/%EC%84%9C%EB%B2%84/2021/09/17/gitlab-ssl-2.html)) 이 경우에도 접속이 불가하다.
 보통 OS가 자동으로 업데이트하니 해당 케이스로 인한 접속 불가현상은 잘 만나보기 힘들다.
+
+<br/>
+
+### 4. 결론
+사실 이론으로만 아는 것보다는, 직접 인증서를 발급받고 웹서버에 등록해 https가 적용된 것을 확인하는 편이 직접 와닿기는 하는 것 같다.
+
+관련해 직접 인증서를 발급받고, 웹서버에 등록하는 내용을 포스팅한 링크를 추가해둔다.
+- [Lets encrypt인증서 발급하기](https://hyooi.github.io/%EC%84%9C%EB%B2%84/2021/09/17/gitlab-ssl-2.html)
+- [Nginx reverse proxy 설정하기](https://hyooi.github.io/%EC%84%9C%EB%B2%84/2021/09/17/gitlab-ssl-3. html)
