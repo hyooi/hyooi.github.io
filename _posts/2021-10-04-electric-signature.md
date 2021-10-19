@@ -105,7 +105,7 @@ SSL은 과거의 보안 기술로 최근에는 모두 TLS프로토콜을 사용�
 그건 인증서를 발급해주는 기관(CA)에 있다.
 
 브라우저의 자물쇠 버튼을 클릭하고, 인증서 > 인증 경로를 확인해보면 다음과 같은 트리 구조를 확인할 수 있다.
-![root-ca](/assets/images/root-ca.png)
+![root-ca](/assets/images/root-ca.PNG)
 
 내 블로그에 적용되어있는 인증서의 발급 대상은 <var>www.github.com</var>인데,
 이 인증서의 상위 인증서는 <var>DigiCert SHA2 High Assurance Server CA</var>,
@@ -120,7 +120,3 @@ Root CA를 확인할 수 없으므로 접속이 차단된다.
 
 또한, Root CA가 만료되는 케이스도 있는데([gitlab-ssl-2참조](https://hyooi.github.io/%EC%84%9C%EB%B2%84/2021/09/17/gitlab-ssl-2.html)) 이 경우에도 접속이 불가하다.
 보통 OS가 자동으로 업데이트하니 해당 케이스로 인한 접속 불가현상은 잘 만나보기 힘들다.
-
-<br/>
-
-#### 4. 결론
