@@ -94,7 +94,7 @@ SSL은 과거의 보안 기술로 최근에는 모두 TLS프로토콜을 사용�
 값이 동일하다면 원본 데이터가 변조되지 않았음을 확인</ins>할 수 있다.
 
 다음은 [위키](https://en.wikipedia.org/wiki/Electronic_signature)에서 가져온 그림인데, 
-다음 그림과 동일한 과정을 거친다고 생각하면 된다.
+즉 데이터 송수신 시 다음 그림과 동일한 과정을 거친다고 생각하면 된다.
 
 ![digital-signature.png](/assets/images/digital-signature.png)
 
