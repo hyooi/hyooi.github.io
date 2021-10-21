@@ -1,14 +1,16 @@
 ---
 layout: post
-title:  "Webpack dev server 기동오류"
-published: false
+title:  "Webpack dev server 기동 시 config-yargs오류 발생"
+categories:
+- 트러블슈팅
+tags:
+- webpack
 ---
 
+### 1. 개요
 웹팩 데브 서버를 기동하는데 하단 에러가 계속 발생했다.
 
-
-
-```
+```bash
 $ webpack-dev-server
 
 > example@1.0.0 start
@@ -39,9 +41,16 @@ server\bin\webpack-dev-server.js:65:1)
 ebpack-dev-server.js'
   ]
 }
-
 ```
 
-찾아봐도 webpack, webpack-cli, webpack-dev-server를 최신화하라는 말뿐..ㅎ
+<br/>
 
-웹팩5부터는 기존 처럼 `webpack-dev-server`가 아닌, `npx webpack serve`으로 실행해주면 된다.
+### 2. 해결
+찾아봐도 webpack, webpack-cli, webpack-dev-server를 최신화하라는 말뿐이어서 고생했는데,
+알고보니 webpack dev server가 4에서 5로 버전이 올라가면서 기동방법이 변경되어 발생한 이슈였다.
+
+webpack5부터는 기존 처럼 <var>webpack-dev-server</var>가 아닌, <var>npx webpack serve</var>으로 실행해야
+정상 동작한다.
+```bash
+$ npx webpack serve
+```
