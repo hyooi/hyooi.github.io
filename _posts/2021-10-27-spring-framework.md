@@ -44,7 +44,19 @@ bean식별자는 id로 하나만 지정할 수도 있지만, 다른 alias를 쓰
 일반적인 엔터프라이즈 애플리케이션은 단일 오프젝트로 구성되지 않는다.
 
 오브젝트들이 협력하여 하나의 어플리케이션을 이루게 되는데, 이 때 오브젝트의 종속관계를 정의하는 것을 의존성 주입이라고 한다.
+DI를 통해 코드가 더 깔끔해지며, 클래스를 테스트하기가 더 쉬워지고, 단위테스트에서 mocking 및 stub을 사용할 수 있다.
 
+의존성주입 방법에는 constructor injection과 setter injection이 있는데,
+스프링팀은 일반적으로 constructor injection을 지지한다.
+이유는 불변 오브젝트로 컴포넌트를 정의하고, 종속성이 null이 아님을 보증하기 때문이다. 
+더 나아가서, 생성자로 주입된 컴포넌트들은 항상 완전히 초기화된 상태로 클라이언트에게 리턴된다.
+
+또한 주입 대상 오브젝트가 많으면 코드 스멜을 유발한다.
+이 때, constructor injection을 사용하게 되면 클래스에 너무 많은 책임이 있으므로 리팩터링해야 함을 알 수 있다.
+> constructor injection을 주로 사용하는 경우, 순환 종속이 발생할 수 있다.
+> 예를들어 A클래스가 B클래스를 주입받고, B클래스는 A클래스를 주입받는 경우, IoC컨테이너는 순환참조를 하게되고 BeanCurrentlyInCreationException
+> 를 유발한다.
+> 이 때 추천하진 않지만 constructor injection대신 setter injection으로 해결할 수는 있다. 
 
 <br/>
 
