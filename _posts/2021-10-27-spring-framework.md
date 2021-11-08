@@ -58,6 +58,36 @@ DI를 통해 코드가 더 깔끔해지며, 클래스를 테스트하기가 더 
 > 를 유발한다.
 > 이 때 추천하진 않지만 constructor injection대신 setter injection으로 해결할 수는 있다. 
 
+또 다른 방법으로 <var>@autowired</var>어노테이션을 사용할 수도 있다.
+스프링이 필요한 빈을 자동으로 찾아 주입해주므로 매우 편리한 기능인데, 사실 한계가 있다.
+1. primitive type, String 및 단순 속성의 배열은 autowiring이 불가하다.
+2. 어떤 오브젝트가 주입될지가 불명확하므로 예기치않은 결과가 발생할 수 있다.
+
+
+### 2.2. 빈 스코프
+스프링 빈은 기본적으로 싱글톤이다. 그러나 빈을 필요에 따라 단일 http request별로 생성해 사용하거나, 
+session별로 사용하거나, 임의의 갯수대로 생성해 사용할 수도 있다.
+
+#### 2.2.1. 싱글톤
+Spring Ioc컨테이너는 싱글톤 빈은 정확히 하나만 생성한다.
+그리고 해당 인스턴스가 사용되는 경우, 모두 동일한 인스턴스를 공유하게된다.
+![img.png](img.png)
+
+> spring의 싱글톤 빈은 GoF의 디자인패턴에서 말하는 싱글톤 패턴과는 차이가 있다.
+> GoF의 싱글톤 패턴은 클래스로더당 하나의 인스턴스를 생성하는데, Spring의 싱글톤은 컨테이너별로 생성한다.
+
+#### 2.1.2. 프로토타입
+특정 빈이 필요할 때마다 새로운 bean을 생성한다. ex. 다른 bean에 주입되거나 getBean()요청 시
+![img_1.png](img_1.png)
+
+Ioc컨테이너는 프로토타입 오브젝트에서는 소멸 주기 콜백을 호출하지 않으므로, 
+프로토타입 빈은 직접 리소스를 해제해야한다. 이 경우 BeanPostProcessor를 활용할 수 있다.
+
 <br/>
+
+#### 2.1.3. request, session, application, websocket
+http요청마다, 동일한 session마다, 전체 웹앱마다 하나의 인스턴스를 생성할 수 있다.
+application스코프는 싱글톤과 비슷해보이지만 ApplicationContext마다 생성되는 싱글톤과는 달리
+ServletContext마다 빈이 생성된다. 따라서 ServletContext에서만 실제로 exposed된다.
 
 ### 4. 결론
