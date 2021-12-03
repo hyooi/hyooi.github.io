@@ -2,7 +2,6 @@
 layout: post
 title:  "Liquibase offline 적용하기"
 categories:
-  - Sql
   - Database
 tags:
   - Liquibase
